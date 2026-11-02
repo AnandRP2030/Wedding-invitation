@@ -1,73 +1,29 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const MUSIC_ENABLED = true;
-import weddingSong from '../assets/audio/wedding-song.mp3';
-
 interface MusicPlayerProps {
-  autoPlay?: boolean;
+  isPlaying: boolean;
+  onToggle: () => void;
 }
 
-const MusicPlayer: React.FC<MusicPlayerProps> = ({ autoPlay = false }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    if (!MUSIC_ENABLED) return;
-
-    // audioRef.current = new Audio(weddingSong);
-    // audioRef.current.loop = true;
-    // audioRef.current.volume = 0.6;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!MUSIC_ENABLED || !autoPlay) return;
-    togglePlay();
-  }, [autoPlay]);
-
-  const togglePlay = () => {
-    if (!MUSIC_ENABLED || !audioRef.current) return;
-
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    } else {
-      audioRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch((e) => console.log('Audio playback prevented:', e));
-    }
-  };
-
+const MusicPlayer: React.FC<MusicPlayerProps> = ({ isPlaying, onToggle }) => {
   return (
     <div className="fixed bottom-6 right-6 z-40">
       <motion.button
-        onClick={togglePlay}
-        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-xl border border-[#C9A84C]/50 bg-gradient-to-br from-[#2A1804] to-[#120B02] text-[#F0D999] hover:border-[#FFF0B8] transition-all duration-300"
+        onClick={onToggle}
+        className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl border border-[#C9A84C]/60 bg-gradient-to-br from-[#2A1804] to-[#120B02] text-[#F0D999] hover:border-[#FFF0B8] hover:text-[#FFF0B8] cursor-pointer transition-all duration-300"
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.94 }}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        title={
-          MUSIC_ENABLED
-            ? isPlaying
-              ? 'Pause wedding music'
-              : 'Play wedding music'
-            : 'Add your MP3 in assets/audio/ to play song'
-        }
+        title={isPlaying ? 'Pause wedding music' : 'Play wedding music'}
+        aria-label={isPlaying ? 'Pause wedding music' : 'Play wedding music'}
       >
         {/* Pulsing ring animation when playing */}
         {isPlaying && (
           <motion.div
             className="absolute inset-0 rounded-full border-2 border-[#C9A84C]"
-            animate={{ scale: [1, 1.4, 1.4], opacity: [0.6, 0, 0] }}
+            animate={{ scale: [1, 1.45, 1.45], opacity: [0.6, 0, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }}
           />
         )}
@@ -104,13 +60,6 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ autoPlay = false }) => {
             </motion.svg>
           )}
         </AnimatePresence>
-
-        {/* Music indicator badge */}
-        {!MUSIC_ENABLED && (
-          <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#C9A84C] text-[#1A0E00] text-[9px] font-bold flex items-center justify-center">
-            ♪
-          </span>
-        )}
       </motion.button>
     </div>
   );

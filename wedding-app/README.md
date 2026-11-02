@@ -11,43 +11,44 @@ A beautiful, animated wedding invitation website built with React + TypeScript +
 - 💻 **Flutter & Java developer Easter egg** for Vishal & Aparna
 - 🗺️ **Interactive map** (OpenStreetMap via Leaflet — free, no API key)
 - 🖼️ **Masonry photo gallery** with lightbox
-- 🎵 **Music player** (add MP3 to enable)
-- 📱 **Fully responsive** — mobile-first design
+- 🎵 **Dynamic Random Music Player** (random song selection + auto-next track)
+- 📱 **Fully responsive** — mobile-first luxury design
 
 ## 🎨 Theme
 
 Kerala traditional palette: antique gold + ivory cream + deep crimson + forest green
 
+## 🎵 Adding More Wedding Songs in the Future
+
+The audio player is configured to **automatically detect and bundle all songs** in the folder!
+
+1. Place your new MP3 in `src/assets/audio/` (e.g. `wedding-song3.mp3`, `wedding-song4.mp3`, etc.).
+2. That's it! **No code changes are needed.**
+3. Every time a guest visits or refreshes the website, a random song is selected.
+4. When a song finishes playing, it will automatically transition to another song from the playlist.
+
 ## 🚀 Deploy to Vercel
 
-1. Push this folder (`wedding-app/`) to GitHub
+1. Push this repository to GitHub
 2. Go to [vercel.com](https://vercel.com) → New Project → Import repo
-3. Framework: **Vite**
-4. Build command: `npm run build`
-5. Output dir: `dist`
-6. Deploy!
-
-## 🎵 Adding the Wedding Song
-
-1. Place your MP3 at: `src/assets/audio/wedding-song.mp3`
-2. Open `src/components/MusicPlayer.tsx`
-3. Set `MUSIC_ENABLED = true`
-4. Uncomment `import weddingSong from '../assets/audio/wedding-song.mp3';`
-5. Pass `weddingSong` to `new Audio(weddingSong)`
-
-**Recommended**: MP3, ~1-3 MB, 45-60 seconds
+3. Root Directory: `wedding-app` (if importing the parent repo) or root if `wedding-app` is its own repo
+4. Framework: **Vite**
+5. Build command: `npm run build`
+6. Output dir: `dist`
+7. Deploy!
 
 ## 🗺️ Updating Venue Pin
 
 Open `src/components/Location.tsx` and update:
 ```ts
-const venueCoords: [number, number] = [8.3067, 77.0832]; // ← exact lat/lng here
+const venueLat = 8.3183;
+const venueLng = 77.0674;
 ```
 
 ## 🛠️ Development
 
 ```bash
+cd wedding-app
 npm install
 npm run dev
 ```
-

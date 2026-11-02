@@ -63,9 +63,6 @@ const CoupleSection: React.FC = () => {
               {/* Role badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E76F00]/10 border border-[#E76F00]/25 mb-6">
                 <JavaIcon size={16} />
-                <span className="text-xs font-mono font-medium text-[#A0520A] tracking-wider">
-                  Java Developer
-                </span>
               </div>
 
               <p className="text-xs tracking-[0.3em] uppercase text-[#C9A84C] font-medium mb-3">
@@ -117,9 +114,6 @@ const CoupleSection: React.FC = () => {
               {/* Role badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#02569B]/10 border border-[#02569B]/25 mb-6">
                 <FlutterIcon size={16} />
-                <span className="text-xs font-mono font-medium text-[#01579B] tracking-wider">
-                  Flutter Developer
-                </span>
               </div>
 
               <p className="text-xs tracking-[0.3em] uppercase text-[#C9A84C] font-medium mb-3">
@@ -165,11 +159,11 @@ const CoupleSection: React.FC = () => {
           <div className="inline-block max-w-2xl px-8 py-6 rounded-lg bg-gradient-to-r from-[#FAF4E6]/80 via-white to-[#FAF4E6]/80 border border-[#C9A84C]/35 shadow-sm">
             <p className="text-base sm:text-lg text-[#5C4D3C] font-script italic leading-relaxed">
               <span className="font-mono text-sm not-italic text-[#A0520A] bg-[#E76F00]/10 px-2 py-0.5 rounded">
-                She codes in Java
+                She codes
               </span>
               {' '}—{' '}
               <span className="font-mono text-sm not-italic text-[#01579B] bg-[#02569B]/10 px-2 py-0.5 rounded">
-                He builds in Flutter
+                He builds
               </span>
               <br />
               <span className="text-lg sm:text-xl font-semibold text-[#9A6F20] mt-1 inline-block">

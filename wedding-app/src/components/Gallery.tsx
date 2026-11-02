@@ -3,20 +3,36 @@ import { motion, AnimatePresence } from 'framer-motion';
 import GoldDivider from './GoldDivider';
 
 // Import couple photos
-import pArch from '../assets/images/IMG-20261102-WA0056.jpg';
-import pSeated from '../assets/images/IMG-20261102-WA0057.jpg';
 import pStanding from '../assets/images/IMG-20261102-WA0058.jpg';
 import pMirror from '../assets/images/IMG-20261102-WA0060.jpg';
-import pCafe from '../assets/images/1000414078.jpg';
-import pCasual from '../assets/images/1000414079.jpg';
+import pSeated from '../assets/images/IMG-20261102-WA0057.jpg';
+import pArch from '../assets/images/IMG-20261102-WA0056.jpg';
 
-const galleryItems = [
-  { src: pStanding, title: 'Forever In Love', span: 'col-span-1 md:col-span-2 md:row-span-2' },
-  { src: pMirror, title: 'Shared Smiles', span: 'col-span-1' },
-  { src: pSeated, title: 'Peaceful Moments', span: 'col-span-1' },
-  { src: pArch, title: 'Traditional Grace', span: 'col-span-1 md:col-span-2' },
-  { src: pCafe, title: 'Where Our Story Grew', span: 'col-span-1' },
-  { src: pCasual, title: 'Together Always', span: 'col-span-1' },
+const coupleGallery = [
+  {
+    src: pStanding,
+    title: 'Forever In Love',
+    subtitle: 'Aparna & Vishal',
+    aspect: 'aspect-[3/4]',
+  },
+  {
+    src: pMirror,
+    title: 'Shared Smiles',
+    subtitle: 'Moments of Joy',
+    aspect: 'aspect-[3/4]',
+  },
+  {
+    src: pSeated,
+    title: 'Peaceful Moments',
+    subtitle: 'Quiet Grace',
+    aspect: 'aspect-[3/4]',
+  },
+  {
+    src: pArch,
+    title: 'Traditional Grace',
+    subtitle: 'Under Sacred Arches',
+    aspect: 'aspect-[3/4]',
+  },
 ];
 
 const Gallery: React.FC = () => {
@@ -42,19 +58,19 @@ const Gallery: React.FC = () => {
           <GoldDivider style="wave" />
         </motion.div>
 
-        {/* Curated Luxury Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-          {galleryItems.map((item, idx) => (
+        {/* 4-Item Balanced Luxury Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {coupleGallery.map((item, idx) => (
             <motion.div
               key={idx}
-              className={`relative group cursor-pointer overflow-hidden rounded-xl luxury-card ${item.span}`}
+              className="relative group cursor-pointer overflow-hidden rounded-2xl luxury-card p-3 flex flex-col justify-between"
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: idx * 0.1 }}
               onClick={() => setSelectedImage(item.src)}
             >
-              <div className="w-full h-72 sm:h-80 md:h-96 overflow-hidden">
+              <div className={`w-full ${item.aspect} overflow-hidden rounded-xl bg-[#FAF4E6]`}>
                 <img
                   src={item.src}
                   alt={item.title}
@@ -64,15 +80,15 @@ const Gallery: React.FC = () => {
               </div>
 
               {/* Hover overlay with delicate gold border */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <p className="text-white font-serif text-lg tracking-wide transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+              <div className="absolute inset-3 rounded-xl bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 text-white">
+                <p className="font-serif text-lg tracking-wide transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                   {item.title}
                 </p>
-                <div className="h-0.5 w-12 bg-[#C9A84C] mt-2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <p className="text-xs text-[#FFF0B8] tracking-widest uppercase mt-0.5">
+                  {item.subtitle}
+                </p>
+                <div className="h-0.5 w-10 bg-[#C9A84C] mt-2 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </div>
-
-              {/* Subtle gold inner border on hover */}
-              <div className="absolute inset-3 border border-[#C9A84C]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-lg" />
             </motion.div>
           ))}
         </div>
@@ -81,14 +97,14 @@ const Gallery: React.FC = () => {
         <AnimatePresence>
           {selectedImage && (
             <motion.div
-              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/90 backdrop-blur-md"
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 bg-black/95 backdrop-blur-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedImage(null)}
             >
               <motion.div
-                className="relative max-w-4xl max-h-[90vh] rounded-2xl overflow-hidden p-2 bg-gradient-to-b from-[#C9A84C]/40 to-[#9A6F20]/40 shadow-2xl"
+                className="relative max-w-4xl max-h-[90vh] rounded-2xl overflow-hidden p-2 sm:p-3 bg-gradient-to-b from-[#C9A84C]/40 to-[#9A6F20]/40 shadow-2xl"
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.9, opacity: 0 }}
@@ -97,13 +113,13 @@ const Gallery: React.FC = () => {
                 <img
                   src={selectedImage}
                   alt="Gallery Preview"
-                  className="max-h-[82vh] w-auto max-w-full rounded-xl object-contain"
+                  className="max-h-[82vh] w-auto max-w-full rounded-xl object-contain shadow-2xl"
                 />
 
                 {/* Close Button */}
                 <button
                   onClick={() => setSelectedImage(null)}
-                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-[#C9A84C] hover:text-[#1A0E00] transition-colors"
+                  className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/70 text-white flex items-center justify-center hover:bg-[#C9A84C] hover:text-[#1A0E00] cursor-pointer shadow-lg transition-colors"
                   aria-label="Close"
                 >
                   ✕
