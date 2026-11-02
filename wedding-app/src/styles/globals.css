@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --gold: #C9A84C;
+  --gold-deep: #9A6F20;
+  --gold-light: #F0D999;
+  --gold-pale: #FBF4E2;
+  --gold-border: rgba(201, 168, 76, 0.35);
+  --ivory: #FCF9F2;
+  --ivory-warm: #F7F1E3;
+  --ivory-card: #FFFFFF;
+  --crimson: #8B1A1A;
+  --forest: #1E3F20;
+  --dark-text: #221B10;
+  --muted-text: #6B5D4D;
+  --soft-text: #8C7C6B;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--ivory);
+  color: var(--dark-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.splash-open {
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-10vh) translateX(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) translateX(var(--drift, 40px)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.gold-shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #9A6F20 0%,
+    #C9A84C 25%,
+    #FFF0B8 50%,
+    #C9A84C 75%,
+    #9A6F20 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+.font-script {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-sans {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Custom card shadow for rich luxury look */
+.luxury-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(201, 168, 76, 0.28);
+  box-shadow: 0 15px 45px -10px rgba(45, 27, 0, 0.08), 0 0 0 1px rgba(201, 168, 76, 0.08);
+}
+
+.luxury-card-dark {
+  background: linear-gradient(145deg, #221504 0%, #170E02 100%);
+  border: 1px solid rgba(201, 168, 76, 0.45);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F1E3;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A84C;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9A6F20;
+}
