@@ -229,13 +229,6 @@ const EventTimeline: React.FC = () => {
             <div className="absolute bottom-4 left-4 w-5 h-5 border-b-2 border-l-2 border-[#C9A84C]/50" />
             <div className="absolute bottom-4 right-4 w-5 h-5 border-b-2 border-r-2 border-[#C9A84C]/50" />
 
-            {/* Groom's Family ribbon */}
-            <div className="absolute top-0 right-0">
-              <div className="bg-[#8B5E2E] text-[#FAF4E6] text-[10px] tracking-widest uppercase font-semibold px-3 py-1 rounded-bl-lg rounded-tr-2xl">
-                Groom's Family
-              </div>
-            </div>
-
             <div>
               {/* Event Header Badge */}
               <div className="flex items-center gap-3 mb-8 mt-2">
