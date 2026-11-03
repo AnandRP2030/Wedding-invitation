@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import GoldDivider from './GoldDivider';
 
 // Import couple photos
-import photo1 from '../assets/images/IMG-20261102-WA0058.jpg';
+import photo1 from '../assets/images/IMG-20261102-WA0060.jpg';
 import photo2 from '../assets/images/IMG-20261102-WA0060.jpg';
 
 const Hero: React.FC = () => {
