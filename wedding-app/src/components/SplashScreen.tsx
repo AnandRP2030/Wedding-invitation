@@ -120,16 +120,6 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onOpen }) => {
           </div>
         </motion.div>
 
-        {/* Auspicious Greeting in Malayalam */}
-        <motion.p
-          className="text-xs sm:text-sm tracking-[0.35em] uppercase text-[#C9A84C] font-light mb-1.5"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35 }}
-        >
-          ശുഭ വിവാഹം
-        </motion.p>
-
         {/* Couple Names */}
         <motion.div
           className="my-1 space-y-0.5"
