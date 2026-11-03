@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-// Couple opening portrait
-import coupleOpeningPhoto from '../assets/images/IMG-20261102-WA0058.jpg';
+// Couple opening portrait — updated to IMG-20261102-WA0060.jpg
+import coupleOpeningPhoto from '../assets/images/IMG-20261102-WA0060.jpg';
 
 interface SplashScreenProps {
   onOpen: () => void;
@@ -119,6 +119,16 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onOpen }) => {
             </div>
           </div>
         </motion.div>
+
+        {/* Auspicious Greeting in Malayalam */}
+        <motion.p
+          className="text-xs sm:text-sm tracking-[0.35em] uppercase text-[#C9A84C] font-light mb-1.5"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35 }}
+        >
+          ശുഭ വിവാഹം
+        </motion.p>
 
         {/* Couple Names */}
         <motion.div
